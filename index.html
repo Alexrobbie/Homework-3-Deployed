@@ -8,7 +8,7 @@
     
 </head>
 <body>
-    <p>How long would you like your Password to be?</p>
+    <p>How long would you like your Password to be? (Minimum of 8, Maximum of 128 Characters)</p>
     <input type="number" id=passwordLength name="passwordLength" min="8" max="128">
     <label for="passwordLength">Characters long</label>
     <p>What would you like your password to contain? (Just lowercase letters by defualt)</p>
@@ -26,6 +26,10 @@
   <label for="special">Special Characters</label>
 </div>
 <button onclick="passwordGen()">Generate Password</button>
+<p id=password>Your Password is: </p>
+<button onclick="copy()">Copy to Clipboard</button>
+<input type="text" id="hide" name="hide">
 <script src="assets/script.js"></script>
+<style>#hide {opacity: 0;}</style>
 </body>
 </html>

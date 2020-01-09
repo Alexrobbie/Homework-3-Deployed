@@ -1,4 +1,4 @@
-
+//1/6/2020 Need to Hardcode a limit of 8-128 password length and add a copy to bin button
 //Math.floor(Math.random() * (max - min + 1)) + min;
 var leter = Math.floor(Math.random() * (26)) + 1;;
 var leterCaps = Math.floor(Math.random() * (26)) + 1;;
@@ -11,7 +11,14 @@ var specialArray = ["!", "@", "#", "$", "%", "^", "&", "*", "?", "/", "-"];
 var length = 10;
 var password = "";
 function passwordGen() {
+    password = "";
     var length = document.querySelector('input[id=passwordLength]').value;
+    if (length<8) {
+        length=8;
+    }
+    if(length>128) {
+        length=128;
+    }
     var useNumbers = document.querySelector('input[id=numbers]').checked;
     var useUpercase = document.querySelector('input[id=upercase]').checked;
     var useSpecial = document.querySelector('input[id=special]').checked;
@@ -118,6 +125,13 @@ function passwordGen() {
     var useNumbers = document.querySelector('input[id=numbers]').checked;
     var useUpercase = document.querySelector('input[id=upercase]').checked;
     var useSpecial = document.querySelector('input[id=special]').checked;
-    alert("Your password is "+password);
-    password = "";
+    document.getElementById("password").innerText=("Your Password is: "+password);
+    document.getElementById("hide").value=password;
+}
+function copy() {
+    document.getElementById("hide").value=password;
+    var copyText=document.getElementById("hide");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
 }
